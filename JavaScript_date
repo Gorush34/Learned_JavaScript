@@ -38,3 +38,60 @@ new Date(1609462861000)
 // 1970년 1월 1일(Unix epoch 시간) 이후 경과된 시간(밀리 초)입니다.
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 날짜 설정하기
+const nextYear = new Date();
+nextYear.setFullYear(2021);
+
+/*
+Date의 날짜 및 시간을 설정을 하기 위해 다음과 같은 함수가 제공되며 Local time을 기반으로 설정됩니다.
+
+setFullYear: 연도를 설정한다.
+setMonth:(0 ~ 11) 월 [ 여기서 1월은 0이고 12월은 11이다 ]을 설정한다.
+setDate: (0 ~ 31). 날짜 [0을 설정한 경우 이전 달의 가장 마지막 날을 설정한다.]를 설정한다. 
+setHours: (0 ~ 23). 시간을 설정한다.
+setMinutes: (0 ~ 59). 분을 설정한다.
+setSeconds: (0 ~ 59). 초를 설정한다.
+setMilliseconds: (0 ~ 999). 밀리 초를 설정한다.
+
+getFullYear: 연도를 반환한다.
+getMonth:(0 ~ 11) 월 [ 여기서 1월은 0이고 12월은 11이다 ]을 반환한다.
+getDate: (1 ~ 31). 날짜를 반환한다.
+getHours: (0 ~ 23). 시간을 반환한다.
+getMinutes: (0 ~ 59). 분을 반환한다.
+getSeconds: (0 ~ 59). 초를 반환한다.
+getMilliseconds: (0 ~ 999). 밀리 초를 반환한다.
+
+ Date 객체의 월(Month) 개념은 zero-indexed 기반이기 때문에 setMonth를 사용하는 경우에 0을 설정하면 1월이 설정되니, 인지하고 사용해야 합니다.
+*/
+
+// today를 기반으로 +- 1로 어제와 내일을 설정
+const today = new Date(); 
+const tomorrow = new Date(today); 
+const yesterday = new Date(today); 
+
+tomorrow.setDate(today.getDate() + 1);  
+console.log(tomorrow); 
+
+yesterday.setDate(today.getDate() - 1); 
+console.log(yesterday);
+
+
+// 함수를 이용한 날짜 설정
+function addDays(date, days) { 
+   const clone = new Date(date);
+   clone.setDate(date.getDate() + days) 
+   return clone; 
+} 
+
+const today = new Date(); 
+const tomorrow = addDays(today, 1); 
+console.log(tomorrow); 
+
+const yesterday = addDays(today, -1); 
+console.log(yesterday);
+
+
+
+
+
